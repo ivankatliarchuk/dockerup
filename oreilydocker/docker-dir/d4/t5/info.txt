@@ -1,0 +1,2 @@
+Create ruby application
+With Senatra framework
