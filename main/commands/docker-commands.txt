@@ -1,0 +1,78 @@
+sudo usermod -aG docker ubunt   // add to docker user group
+
+// show available images
+docker images
+
+curl localhost:4567/   // access the node.
+// access container
+docker exec -i -t 3e9 /bin/bash
+
+
+docker inspect <image id>   // inpsect image
+docker inspect 91fc3115875e | grep IPAddress | grep -v null| cut -d '"' -f 4 | head -1 // get ip
+ address
+docker inspect --format='{{.NetworkSettings.IPAddress}}' 3e9
+
+
+curl 172.17.0.2:4567  make request to port number
+
+
+// run insisde the container
+docker run -i -t <ubuntu> /bin/bash
+
+// run in background
+docker run -d <rickfast/hello-oreilly-http>
+
+docker stop <3 digits id enough>
+
+// stopped containers
+docker ps -a
+// assign name to container
+docker run -d --name <hello_container1> <rickfast/hello-oreilly-http>
+
+
+
+// docker links to connect containers. by ip and port
+ docker run --link redis -i -t ubuntu /bin/bash
+// inspect environment variables
+env
+
+
+// attach ip address with -p
+docker run -p 4567:4567 --link redis --name web rickfast/oreilly-simple-web-app
+
+-P binds all exposed ports inside the container to random available port on docker
+
+// find mapped ports
+docker ps -l
+docker port web
+
+// add environment variable
+docker run -e "HELLO=OREILLY" 
+// export variables
+docker run -e "HELLO=OREILLY" ubuntu /bin/bash -c export
+
+
+// read container logs
+docker logs -f shutmedown
+
+// docker restart policy
+ docker run -d -p 4567:4567 --name timebomb --restart unless-stopped <container>
+
+// remove docker containers and images
+docker rmi 
+// search
+docker search alpine
+
+
+// add changes to running instance
+docker commit -m "installed node and wrote average appliation" <cont id>
+
+
+// create image with redis
+docker run -d -P --name redis redis
+// login to docker hub
+docker login
+
+
+
