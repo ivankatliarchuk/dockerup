@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.docker</groupId>
-    <artifactId>main</artifactId>
+    <artifactId>DOCKER</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../guptadockerfile</module>
+        <module>../oreilydocker</module>
     </modules>
 
 
