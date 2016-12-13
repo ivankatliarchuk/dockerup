@@ -1,0 +1,13 @@
+elastic search
+kibana
+logstash
+
+
+access kibana from the browser
+
+
+172.19.0.4:5601
+
+kibana 172.19.0.4 gateway 1
+logstash 172.19.0.3 gateway 1
+
