@@ -1,7 +1,7 @@
 from  django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 
-from todobackend.src.todo import views
+from todo import views
 
 # create a router and register our viewsets with it
 router = DefaultRouter(trailing_slash=False)

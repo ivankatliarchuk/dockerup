@@ -3,8 +3,8 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from todobackend.src.todo.models import TodoItem
-from todobackend.src.todo.serializers import TodoItemSerializer
+from todo.models import TodoItem
+from todo.serializers import TodoItemSerializer
 
 
 class TodoItemViewSet(viewsets.ModelViewSet):

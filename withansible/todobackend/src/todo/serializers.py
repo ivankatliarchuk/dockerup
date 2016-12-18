@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from todobackend.src.todo.models import TodoItem
+from todo.models import TodoItem
 
 
 class TodoItemSerializer(serializers.HyperlinkedModelSerializer):
