@@ -1,0 +1,6 @@
+http://blog.vngrs.com/dockerize-your-development-environment/
+
+docker build -t ubuntu_java .  < create docker image
+
+
+docker run --rm -it ubuntu_java /bin/bash   < access docker instance.
