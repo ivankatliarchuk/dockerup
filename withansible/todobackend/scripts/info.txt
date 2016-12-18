@@ -1,1 +1,11 @@
 Development image entrypoint script
+
+
+server at http://127.0.0.1:8000/
+
+
+python manage.py runserver
+
+# set up datasource
+pyton manage.py migrate
+

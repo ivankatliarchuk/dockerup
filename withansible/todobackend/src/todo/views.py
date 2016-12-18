@@ -1,8 +1,7 @@
-from rest_framework import reverse
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
-
+from rest_framework.reverse import reverse
 from todo.models import TodoItem
 from todo.serializers import TodoItemSerializer
 
@@ -13,9 +12,9 @@ class TodoItemViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         # save isntale to get primary key and then update URL
-        insatnce = serializer.save()
-        insatnce.url = reverse('todoitem_detail', args=[instance.pk], request=self.request)
-        insatnce.save()
+        instance = serializer.save()
+        instance.url = reverse('todoitem-detail', args=[instance.pk], request=self.request)
+        instance.save()
 
     # ability to delete all the data
     def delete(self, request):
