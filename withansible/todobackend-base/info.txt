@@ -1,0 +1,11 @@
+environmnet setup
+
+build from docker file
+
+create instance
+
+docker build -t <image-name> .
+
+# --rm flag to automatically remove the container after it exits
+# ps container will execute : entrypoint.sh ps
+docker run --rm todobackend ps
