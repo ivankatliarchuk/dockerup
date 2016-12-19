@@ -3,4 +3,5 @@ target
 withansible.iml
 todobackend/venv
 todobackend/src/db.sqlite3
+todobackend-specs/node_modules
 .idea
