@@ -15,112 +15,112 @@ var url = process.env.URL || 'http://localhost:8000/todos';
  */
 
 describe('Cross Origin Requests', function () {
-   var result;
+    var result;
 
-   // function catch the response and store it.
-   before(function () {
-       result = request('OPTIONS', url)
-           .set('Origin', 'http://someplace.com')
-           .end();
-   });
+    // function catch the response and store it.
+    before(function () {
+        result = request('OPTIONS', url)
+            .set('Origin', 'http://someplace.com')
+            .end();
+    });
 
     /**
      * Assert that received an expected CORS headers.
      */
-   it('should return the correct CORS headers', function () {
-      return assert(result, "headers").to.contain.all.keys([
-          'access-control-allow-origin',
-          'access-control-allow-methods',
-          'access-control-allow-headers'
-      ]);
-   });
+    it('should return the correct CORS headers', function () {
+        return assert(result, "headers").to.contain.all.keys([
+            'access-control-allow-origin',
+            'access-control-allow-methods',
+            'access-control-allow-headers'
+        ]);
+    });
 
     /**
      * Assert that received a start for access control headers.
      */
-   it('should allow all origins', function () {
-      return assert(result, "header.access-control-allow-origin").to.equal('*');
-   });
+    it('should allow all origins', function () {
+        return assert(result, "header.access-control-allow-origin").to.equal('*');
+    });
 });
 
 /**
  * Create item scenario
  */
 describe('Create TODO Item', function () {
-   var result;
+    var result;
 
-   before(function () {
-      result = post(url, {title: 'Walk the dog'})
-   });
+    before(function () {
+        result = post(url, {title: 'Walk the dog'})
+    });
 
-   it('should return a 201 CREATED response', function () {
-       return assert(result, "status").to.equal(201);
-   });
+    it('should return a 201 CREATED response', function () {
+        return assert(result, "status").to.equal(201);
+    });
 
-   it('should receive a location hyperlink', function () {
-      return assert(result, 'header.location').to.match(/^https?:\/\/.+\/todos\/[\d]+$/)
-   });
+    it('should receive a location hyperlink', function () {
+        return assert(result, 'header.location').to.match(/^https?:\/\/.+\/todos\/[\d]+$/)
+    });
 
-   it('should create the item', function () {
-      var item = result.then(function (res) {
-         return get(res.header['location']);
-      });
+    it('should create the item', function () {
+        var item = result.then(function (res) {
+            return get(res.header['location']);
+        });
 
-      return assert(item, 'body.title').that.equals('Walk the dog')
-   });
+        return assert(item, 'body.title').that.equals('Walk the dog')
+    });
 
-   after(function () {
-      return del(url);
-   });
+    after(function () {
+        return del(url);
+    });
 
 });
 
 describe('Update Todo Item', function () {
-   var location;
+    var location;
 
-   beforeEach(function (done) {
-       post(url, { title: 'Walk the dog'}).then(function (res) {
-          location = res.header['location'];
-          done();
-       });
-   });
+    beforeEach(function (done) {
+        post(url, {title: 'Walk the dog'}).then(function (res) {
+            location = res.header['location'];
+            done();
+        });
+    });
 
-   it('should have completed set to true after PUT update', function () {
-      var result = update(location, 'PUT', { 'completed': true});
-      return assert(result, "body.completed").to.be.true;
-   });
+    it('should have completed set to true after PUT update', function () {
+        var result = update(location, 'PUT', {'completed': true});
+        return assert(result, "body.completed").to.be.true;
+    });
 
-   it('should have completed set to true after PATCH update', function () {
-      var result = update(location, 'PATCH', { 'completed' : true});
-      return assert(result, "body.completed")
-   });
+    it('should have completed set to true after PATCH update', function () {
+        var result = update(location, 'PATCH', {'completed': true});
+        return assert(result, "body.completed")
+    });
 
-   after(function () {
-      return del(url);
-   });
+    after(function () {
+        return del(url);
+    });
 });
 
 describe('Delete Todo Item', function () {
-   var location;
+    var location;
 
-   beforeEach(function (done) {
-       post(url, { title : 'Walk the dog'}).then(function (res) {
-          location = res.header['location'];
-          done();
-       });
-   });
+    beforeEach(function (done) {
+        post(url, {title: 'Walk the dog'}).then(function (res) {
+            location = res.header['location'];
+            done();
+        });
+    });
 
-   it('should return a 204 NO CONTENT reponse', function () {
-      var result = del(location);
-      return assert(result, "status").to.equal(204);
-   });
+    it('should return a 204 NO CONTENT reponse', function () {
+        var result = del(location);
+        return assert(result, "status").to.equal(204);
+    });
 
-   it('should delete the item', function () {
-      var result = del(location).then(function (res) {
-         return get(location);
-      });
-      return expect(result).to.eventually.be.rejectedWith('Not Found')
-   });
+    it('should delete the item', function () {
+        var result = del(location).then(function (res) {
+            return get(location);
+        });
+        return expect(result).to.eventually.be.rejectedWith('Not Found')
+    });
 });
 
 /*
@@ -160,7 +160,7 @@ function update(url, method, data) {
 
 // Helper assert function for property and return expectations
 function assert(result, prop) {
-    return expect(result).to.eventually.hade.deep.property(prop);
+    return expect(result).to.eventually.have.deep.property(prop);
 }
 
 
