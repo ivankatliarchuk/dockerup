@@ -60,7 +60,9 @@ docker logs -f shutmedown
  docker run -d -p 4567:4567 --name timebomb --restart unless-stopped <container>
 
 // remove docker containers and images
-docker rmi 
+docker rmi <tag>
+# forced remove
+docker rmi -f <tag>
 // search
 docker search alpine
 
