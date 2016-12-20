@@ -1,0 +1,20 @@
+app:                          < 'app' servie aka container
+  image: myorg/myrepo:latest  < image the service is based from
+  links:                      < list of service dependecies
+   - db
+  volumes:                    < list of volumes to mount
+   - /path/to/host:/path
+  volumes_from:               < volume container to attach
+   - cahce
+  environment:                < environment variables
+    MYSQL_DB: todobackend
+
+db:                           < 'db' service, another container
+ image: mysql
+
+# up containers
+docker-compose up <service name>
+# kill current docker processes
+docker-compose kill
+# force container removal
+docker-compose rm -f
