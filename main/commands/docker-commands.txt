@@ -1,5 +1,7 @@
 sudo usermod -aG docker ubunt   // add to docker user group
 
+docker build -t <name> -f <dockerfile-location> .
+
 // show available images
 docker images
 
@@ -76,5 +78,17 @@ docker run -d -P --name redis redis
 // login to docker hub
 docker login
 
+# RUN commnds
+# get docker timings
+time docker
+# --rm mean remove after exit
+docker run rim --rm <name>
+# use cache when run volume container
+time docker run --rm --volumes-from cache todobackend-dev
 
-
+# create volume containers
+# -v /tml/cache:/cache  < persist cahce on the local disk of the docker host
+# --entrypoint true     < override entry point to make docker container exit emidiately without doing anything
+# --name cache          < name volume container cache
+#
+docker run -v /tmp/cache:/cache --entrypoint true --name cache <todobackend-dev (development image)>

@@ -13,9 +13,9 @@ NOSE_ARGS = [
   '--with-spec',                    # spec style tests
   '--spec-color',
   '--with-xunit',                   # enable xunit plugin
-  '--xunit-file=%s/unittests.xml' % TEST_OUTPUT_DIR,
+  '--xunit-file=%s/unittests.xml' % TEST_OUTPUT_DIR, # < /reports/unittests.xml
   '--cover-xml',                    # produce XML coverage info
-  '--cover-xml-file=%s/coverage.xml' % TEST_OUTPUT_DIR,
+  '--cover-xml-file=%s/coverage.xml' % TEST_OUTPUT_DIR, # < /reports/coverage.xml
 ]
 
 #Database
