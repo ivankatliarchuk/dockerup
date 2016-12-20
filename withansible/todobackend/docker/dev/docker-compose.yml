@@ -1,0 +1,70 @@
+version: '2'
+services:
+    test:
+      build:  ../../
+      # dockerfile: docker/dev/Dockerfile
+#      volumes_from:
+#         - cache
+      container_name: "Container-Todo-Test"
+      links:
+         - db
+      networks:
+         internal:
+            ipv4_address: 173.168.11.8
+      environment:
+         DJANGO_SETTINGS_MODULE: todobackend.settings.test
+         MYSQL_HOST: db
+         MYSQL_USER: root
+         MYSQL_PASSWORD: password
+         TEST_OUTPUT_DIR: /reports
+
+# specify the agent service
+    agent:
+      image: app/ansible
+      container_name: "Container-Ansible"
+      links:
+         - db
+      environment:
+         PROBE_HOST: "db"
+         PROBE_PORT: "3306"
+      networks:
+         internal:
+            ipv4_address: 173.168.11.2
+      command: ["probe.yml"]
+
+# database container
+    db:
+      image: mysql:5.6
+      hostname: db
+      container_name: "Cont-Mysql"
+      extra_hosts:
+         - "mysqldb:162.243.195.83"
+      networks:
+         internal:
+            ipv4_address: 173.168.11.3
+         aliases:
+            - db
+            - dbmysql
+      ports:
+         - 3306:3306
+      environment:
+         MYSQL_ROOT_PASSWORD: password
+         MYSQL_USER: todo
+         MYSQL_PASSWORD: todopass
+         MYSQL_DATABASE: todobase
+
+# define cache volume container
+#    cache:
+#      build: ../../
+#      dockerfile: docker/dev/Dockerfile
+#      volumes:
+#         - /tmp/cache:/cache
+#      entrypoint: "true"
+networks:
+   internal:
+      driver: bridge
+      ipam:
+          driver: default
+          config:
+             - subnet: 173.168.11.0/24
+               gateway: 173.168.11.1

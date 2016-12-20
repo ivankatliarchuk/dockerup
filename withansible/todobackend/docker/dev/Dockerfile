@@ -1,5 +1,4 @@
 FROM todobackend-base:latest
-
 MAINTAINER Ivan Ka <tanzwud.work@gmail.com>
 
 # Install dev/build dependencies
