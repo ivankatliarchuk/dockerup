@@ -42,16 +42,16 @@ services:
       networks:
          internal:
             ipv4_address: 173.168.11.3
-         aliases:
-            - db
-            - dbmysql
+            aliases:
+              - db
+              - dbmysql
       ports:
          - 3306:3306
       environment:
          MYSQL_ROOT_PASSWORD: password
          MYSQL_USER: todo
          MYSQL_PASSWORD: todopass
-         MYSQL_DATABASE: todobase
+         MYSQL_DATABASE: todobackend
 
 # define cache volume container
 #    cache:
