@@ -4,4 +4,8 @@ withansible.iml
 todobackend/venv
 todobackend/src/db.sqlite3
 todobackend-specs/node_modules
+
+
+todobackend-client/bower_components
+todobackend-client/node_modules
 .idea

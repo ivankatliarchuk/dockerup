@@ -3,7 +3,7 @@ FROM todobackend-base:latest
 MAINTAINER Ivan Ka <tanzwud.work@gmail.com>
 
 # Install dev/build dependencies
-RUN apt-get upate && \
+RUN apt-get update && \
     apt-get install -qy python-dev
 
 # Activate virtual environmnet and isntall wheel support
