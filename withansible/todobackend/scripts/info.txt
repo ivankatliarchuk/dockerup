@@ -9,3 +9,25 @@ python manage.py runserver
 # set up datasource
 pyton manage.py migrate
 
+# setup tests
+python manage.py test
+# with special settings
+python manage.py test --settings=todobackend.settings.test
+
+
+# install mysql db.
+brew install homebrew/versions/mysql156
+
+
+# start mysql server
+mysql.server start
+
+mysql root pass 'root
+
+'
+# remove mysql
+sudo apt-get remove --purge mysql-server mysql-client mysql-common
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo rm -rf /var/lib/mysql
+sudo rm -rf /etc/mysql
