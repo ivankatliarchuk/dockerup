@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Active virtual environment
 .  /appenv/bin/activate
 

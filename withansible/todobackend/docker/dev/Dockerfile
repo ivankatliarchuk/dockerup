@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -qy python-dev
 
 # Activate virtual environmnet and isntall wheel support
-RUN . /appenv/bin/activate &&
+RUN . /appenv/bin/activate && \
     pip install wheel --upgrade
 
 # PIP environmnet variables (NOTE: must be set after installing wheel)
