@@ -9,3 +9,5 @@ todobackend-specs/node_modules
 todobackend-client/bower_components
 todobackend-client/node_modules
 .idea
+*.pyc
+todobackend/db.sqlite3
