@@ -92,3 +92,5 @@ time docker run --rm --volumes-from cache todobackend-dev
 # --name cache          < name volume container cache
 #
 docker run -v /tmp/cache:/cache --entrypoint true --name cache <todobackend-dev (development image)>
+
+watch -n 1 docker ps
